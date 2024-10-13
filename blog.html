@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Blog - My Blogging Platform</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>My Blogging Platform</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div id="post-form" class="hidden">
+            <h2>Create a New Post</h2>
+            <input type="text" id="post-title" placeholder="Title" required />
+            <textarea id="post-content" placeholder="Write your blog here..."></textarea>
+            <input type="file" id="post-image" accept="image/*" />
+            <button id="save-post">Save Post</button>
+            <button id="cancel-post">Cancel</button>
+        </div>
+        <button id="new-post-button" class="primary-button">Add New Post</button>
+        <div class="container" id="posts-container"></div>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Blogging Platform. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

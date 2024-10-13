@@ -1,0 +1,138 @@
+/* General Styles */
+html,body{
+height: 100%;
+margin: 0;
+}
+main{
+    flex: 1;
+    padding: 20px;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f3f4f6; /* Soft background color */
+    color: #333; /* Text color */
+display: flex;
+flex-direction: column;
+}
+
+/* Header Styles */
+header {
+    background: #007bff; /* Header background color */
+    color: white; /* Text color */
+    padding: 20px;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 1200px; /* Centering the header content */
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+    max-width: 1200px; /* Centering the main content */
+    margin: 0 auto;
+}
+
+/* Post Form Styles */
+#post-form {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+button {
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.primary-button {
+    background-color: #28a745; /* Green button */
+    color: white;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button.primary-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Card Container Styles */
+.container {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create responsive grid with min 300px width */
+    gap: 20px; /* Space between the cards */
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Fixed width for each card */
+    max-height: 400px; /* Limit the height */
+    overflow: hidden; /* Hide overflow */
+    display: flex;
+    flex-direction: column; /* Arrange children in a column */
+}
+.card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.5em; /* Larger title */
+}
+
+.card p {
+    margin: 10px 0;
+    flex-grow: 1; /* Allow content to fill available space */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis for overflow */
+}
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

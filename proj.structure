@@ -1,0 +1,7 @@
+/multi-page-blog
+    ├── index.html        // Home page
+    ├── about.html        // About Us page
+    ├── contact.html      // Contact Us page
+    ├── blog.html         // Blog page
+    ├── styles.css        // Styles
+    └── script.js         // JavaScript functionality
