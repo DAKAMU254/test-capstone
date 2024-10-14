@@ -1,112 +1,73 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const postForm = document.getElementById('post-form');
-    const postsContainer = document.getElementById('posts-container');
-    const newPostButton = document.getElementById('new-post-button');
-    const savePostButton = document.getElementById('save-post');
-    const cancelPostButton = document.getElementById('cancel-post');
-    const postTitleInput = document.getElementById('post-title');
-    const postContentInput = document.getElementById('post-content');
-    let currentPostIndex = null;  // To track the index of the post being edited
+// Get HTML elements
+const newPostButton = document.getElementById('new-post-button');
+const postForm = document.getElementById('post-form');
+const savePostButton = document.getElementById('save-post');
+const cancelPostButton = document.getElementById('cancel-post');
+const postsContainer = document.getElementById('posts-container');
 
-    // Load saved posts from local storage
-    loadPosts();
+// Function to toggle the display of the post form
+newPostButton.addEventListener('click', () => {
+    postForm.style.display = postForm.style.display === 'block' ? 'none' : 'block';
+});
 
-    // Show the post form for adding new blog post
-    newPostButton.addEventListener('click', () => {
-        postForm.classList.toggle('hidden');
-        postTitleInput.value = '';
-        postContentInput.value = '';
-        currentPostIndex = null; // Reset index
-    });
+// Function to handle saving a new post
+savePostButton.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent form from submitting
 
-    // Save the blog post to local storage
-    savePostButton.addEventListener('click', () => {
-        const title = postTitleInput.value;
-        const content = postContentInput.value;
+    // Get the values from the input fields
+    const title = document.getElementById('post-title').value;
+    const content = document.getElementById('post-content').value;
+    const imageInput = document.getElementById('post-image');
+    
+    // Create a new post element
+    if (title && content) {
+        const post = document.createElement('div');
+        post.classList.add('post');
 
-        if (title && content) {
-            const posts = getPostsFromLocalStorage();
-            if (currentPostIndex === null) {
-                // Create a new post
-                const post = {
-                    title: title,
-                    content: content
-                };
-                posts.push(post);
-            } else {
-                // Edit an existing post
-                posts[currentPostIndex] = {
-                    title: title,
-                    content: content
-                };
-            }
-            savePostsToLocalStorage(posts);
-            loadPosts();
-            postForm.classList.add('hidden');
-        } else {
-            alert('Please fill in both fields.');
+        // Create post title and content
+        const postTitle = document.createElement('h3');
+        postTitle.innerText = title;
+
+        const postContent = document.createElement('p');
+        postContent.innerText = content;
+
+        // Optionally include an image if uploaded
+        if (imageInput.files[0]) {
+            const postImage = document.createElement('img');
+            postImage.src = URL.createObjectURL(imageInput.files[0]);
+            postImage.alt = title;
+            postImage.style.maxWidth = '100%'; // Make sure the image fits well
+            post.appendChild(postImage);
         }
-    });
 
-    // Cancel adding or editing a post
-    cancelPostButton.addEventListener('click', () => {
-        postForm.classList.add('hidden');
-        currentPostIndex = null; // Reset current editing index
-    });
+        // Append title and content to the new post
+        post.appendChild(postTitle);
+        post.appendChild(postContent);
 
-    function loadPosts() {
-        const posts = getPostsFromLocalStorage();
-        postsContainer.innerHTML = '';
+        // Append the new post to the posts container
+        postsContainer.prepend(post); // Add new post at the top
 
-        posts.forEach((post, index) => {
-            const postDiv = document.createElement('div');
-            postDiv.classList.add('post');
-            postDiv.innerHTML = `
-                <h3>${post.title}</h3>
-                <p>${post.content}</p>
-                <button class="edit-post" data-index="${index}">Edit</button>
-                <button class="delete-post" data-index="${index}">Delete</button>
-            `;
-            postsContainer.appendChild(postDiv);
-        });
+        // Clear the input fields
+        document.getElementById('post-title').value = '';
+        document.getElementById('post-content').value = '';
+        imageInput.value = '';
 
-        // Attach event listeners to edit and delete buttons
-        document.querySelectorAll('.edit-post').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = e.target.getAttribute('data-index');
-                editPost(index);
-            });
-        });
-
-        document.querySelectorAll('.delete-post').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const index = e.target.getAttribute('data-index');
-                deletePost(index);
-            });
-        });
+        // Hide the post form
+        postForm.style.display = 'none';
+    } else {
+        alert('Please fill in both the title and content.');
     }
+});
 
-    function editPost(index) {
-        const posts = getPostsFromLocalStorage();
-        postTitleInput.value = posts[index].title;
-        postContentInput.value = posts[index].content;
-        postForm.classList.remove('hidden');
-        currentPostIndex = index; // Set the editing index
-    }
+// Function to handle canceling the post creation
+cancelPostButton.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent form from submitting
 
-    function deletePost(index) {
-        const posts = getPostsFromLocalStorage();
-        posts.splice(index, 1); // Remove the post from the array
-        savePostsToLocalStorage(posts); // Update local storage
-        loadPosts(); // Reload the posts
-    }
+    // Clear the input fields
+    document.getElementById('post-title').value = '';
+    document.getElementById('post-content').value = '';
+    document.getElementById('post-image').value = '';
 
-    function getPostsFromLocalStorage() {
-        const postsJson = localStorage.getItem('blogPosts');
-        return postsJson ? JSON.parse(postsJson) : [];
-    }
-
-    function savePostsToLocalStorage(posts) {
-        localStorage.setItem('blogPosts', JSON.stringify(posts));
-    }
+    // Hide the post form
+    postForm.style.display = 'none';
 });

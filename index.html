@@ -1,11 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Home - My Blogging Platform</title>
+    <style>
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5; /* Light Gray for background */
+            color: #2f4f4f; /* Dark Slate Gray for text */
+        }
+
+        header {
+            background: #ff6f61; /* Dark Coral */
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #20b2aa; /* Light Sea Green */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #fff; /* Turn white on hover */
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff; /* White background for main content */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .welcome-section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .welcome-section h2 {
+            color: #ff6f61; /* Dark Coral */
+            margin-bottom: 15px;
+        }
+
+        .featured-posts {
+            text-align: center;
+        }
+
+        .featured-posts h3 {
+            margin-bottom: 15px;
+            color: #2f4f4f; /* Dark Slate Gray */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .post {
+            background: #f5deb3; /* Wheat (Beige) */
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .post:hover {
+            transform: scale(1.03);
+        }
+
+        .post h4 {
+            margin: 10px 0;
+            color: #2f4f4f; /* Dark Slate Gray */
+        }
+
+        .post p {
+            font-size: 0.9em;
+            color: #555; /* Dark Gray */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #2f4f4f; /* Dark Slate Blue */
+            color: #fff;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <div class="header-content">
@@ -26,10 +155,29 @@
             <p>Join us as we explore various topics, share experiences, and connect through the power of words.</p>
             <p>Discover our latest blog posts and dive into the world of information and creativity!</p>
         </section>
-        
+
         <section class="featured-posts">
             <h3>Featured Blog Posts</h3>
-            <div class="container" id="featured-posts-container"></div>
+            <div class="container" id="featured-posts-container">
+                <!-- Example blog post cards -->
+                <div class="post">
+                    <h4>Understanding the Basics of Blogging</h4>
+                    <p>A deep dive into what it takes to start and grow a blog effectively.</p>
+                </div>
+                <div class="post">
+                    <h4>Design Tips for Your Blog</h4>
+                    <p>Learn how to make your blog look stunning with effective design tips.</p>
+                </div>
+                <div class="post">
+                    <h4>Writing Engaging Content</h4>
+                    <p>Strategies that will help you write articles that resonate with your audience.</p>
+                </div>
+                <div class="post">
+                    <h4>Monetizing Your Blog</h4>
+                    <p>Explore various options to earn from your blogging efforts.</p>
+                </div>
+                <!-- Add more posts as needed -->
+            </div>
         </section>
     </main>
     <footer>
@@ -37,4 +185,5 @@
     </footer>
     <script src="script.js"></script>
 </body>
+
 </html>
